@@ -1,0 +1,6 @@
+<%= form_for([@project, @project.tasks.build]) do |f| %>
+ <%= f.text_field :content, placeholder: "New Task" %>
+ <%= f.select(:user_id, @project.users.collect {|a| [a.email, a.id]}, {:prompt => 'Select Person'}) -%>
+  <%= f.select(:status, ["Pending","Completed"], {}, { :class => 'my_style_class' }) -%>
+ <%= f.submit %>
+<% end %>

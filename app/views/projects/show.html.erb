@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+<table style="filter: alpha(opacity=40); opacity: 0.95;border:1px black solid;">
+    <tr>
+        <th>Title</th>
+        <td> <%= @project.title %></td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td> <%= @project.description %></td>
+    </tr>
+    <tr>
+       <th>Users</th>
+        <td><%= @project.users.collect(&:email).join(", ") %></td>
+    </tr>
+     <tr>
+       <th>Tasks</th>
+        <td><%= render @project.tasks %></td>
+    </tr>
+    <tr>
+        <th>Create New Task</th>
+        <td>
+            <div id="form">
+              <%= (render "tasks/form") if current_user.admin? %>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th>Actions</th>
+        <td><%= link_to_if current_user.admin?, 'Edit', edit_project_path(@project) %> </td>
+    </tr>
+</table>
+
+
+
+

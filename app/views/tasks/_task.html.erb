@@ -1,0 +1,12 @@
+<table border="1">
+    <tr bgcolor="<%= '#FFF000' if task.user == current_user %>">
+        <td><%= task_counter + 1 %></td>
+        <td><%= task.content %></td>
+        <td><%= task.status %></td>
+        <td><%= task.user.email rescue "no user assigned yet" %> </td>
+        <td><%= link_to_if (task.status!= "Completed" && current_user == task.user), "Mark as Complete", complete_project_task_path(@project, task.id), method: :patch %></td>
+        <td><%= link_to_if current_user.admin?, "Delete", project_task_path(@project, task.id), method: :delete, data: { confirm: "Are you sure?" } %> </td>
+    </tr>
+</table>
+
+
