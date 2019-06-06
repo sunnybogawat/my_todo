@@ -42,6 +42,8 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     respond_to do |format|
+      Rails.logger.info ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+      Rails.logger.info project_params
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
